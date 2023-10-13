@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ButtonSubmitForm from "../../components/ButtonSubmitForm";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { api } from "../../api";
-import { notepadSchema } from "../../notepadSchema";
+import { notepadSchema } from "../../postSchema";
 import { useZorm } from "react-zorm";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-simple-toasts";
