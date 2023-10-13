@@ -1,7 +1,7 @@
 import { SiMicrosoftonenote as IconLogoNotepad } from "react-icons/si";
-import ButtonCreateNotepad from "./ButtonCreateNotepad";
+import ButtonCreateNotepad from "./ButtonCreatePost";
 import { Link } from "react-router-dom";
-import ListNotepads from "./ListNotepads";
+import ListNotepads from "./ListPosts";
 
 const textsBanner = {
   h1: "CharliePad",
