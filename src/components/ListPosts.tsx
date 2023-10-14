@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 
-const textListNotepads = {
-    button: "Listar Notepads",
-}
+const textListPosts = {
+  button: "Listar Posts",
+};
 
-const ListNotepads = () =>{
-    return (
-        <div>
-            <Link to="/listar-notepads" className="pl-12">
-            <button className="text-white text-l font-bold hover:text-defaultRed tracking-wide">
-                {textListNotepads.button}
-            </button>
-            </Link>
-        </div>
-    )
-}
+const ListPosts = () => {
+  return (
+    <div>
+      <Link to="/listar-posts" className="pl-12">
+        <button className="text-white text-l font-bold hover:text-defaultRed tracking-wide">
+          {textListPosts.button}
+        </button>
+      </Link>
+    </div>
+  );
+};
 
-export default ListNotepads;
+export default ListPosts;
