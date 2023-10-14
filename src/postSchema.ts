@@ -30,7 +30,7 @@ const content = z
     message: "Máximo de 140 caracteres para o conteúdo",
   });
 
-export const notepadSchema = z.object({
+export const postSchema = z.object({
   title,
   subtitle,
   content,
