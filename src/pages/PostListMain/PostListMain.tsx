@@ -6,27 +6,27 @@ import EditButton from "../../components/EditButton";
 import BreadCrumbs from "../../components/BreadCrumbs";
 import { Helmet } from "react-helmet";
 
-// const notepads = [
+// const posts = [
 //   {
 //     id: uuid(),
-//     tittle: "Primeiro Notepad",
-//     subtitle: "Primeiro Notepad cadastrado",
+//     tittle: "Primeiro Post",
+//     subtitle: "Primeiro Post cadastrado",
 //     createdAt: new Date(),
 //   },
 
 //   {
 //     id: uuid(),
-//     tittle: "Segundo Notepad",
-//     subtitle: "Segundo Notepad cadastrado",
+//     tittle: "Segundo Post",
+//     subtitle: "Segundo Post cadastrado",
 //     createdAt: new Date(),
 //   },
 // ];
 
-const textNotepadList = {
-  title: "NotepadList",
+const textPostList = {
+  title: "PostList",
 };
 
-interface Notepad {
+interface Post {
   id: string;
   title: string;
   subtitle: string;
@@ -34,38 +34,38 @@ interface Notepad {
   created_at: Date;
 }
 
-const initialNotepads: Notepad[] = [];
+const initialPosts: Post[] = [];
 const loadSpinner = true;
 
 // Componente Filho
-const NotepadList = () => {
-  const [notepads, setNotepads] = useState<Notepad[]>(initialNotepads);
+const PostList = () => {
+  const [posts, setPosts] = useState<Post[]>(initialPosts);
   const [load, setLoad] = useState(loadSpinner);
 
-  async function getNotepads() {
-    const response = await api.get("/notepads");
+  async function getPosts() {
+    const response = await api.get("/posts");
     console.log(response);
 
-    const showNotepads: Notepad[] = response.data.notepads;
-    setNotepads(showNotepads);
+    const showPosts: Post[] = response.data.posts;
+    setPosts(showPosts);
   }
 
   useEffect(() => {
-    getNotepads();
+    getPosts();
     console.log("Os dados foram carregados!");
   }, []);
 
   useEffect(() => {
-    if (notepads.length > 0) {
+    if (posts.length > 0) {
       setLoad(false);
     }
     console.log("Os dados foram atualizados");
-  }, [notepads]);
+  }, [posts]);
 
   return (
     <div className="p-5 m-5 text-white bg-darkTheme max-w-screen-xl md:mx-auto">
       <Helmet>
-        <title>{textNotepadList.title}</title>
+        <title>{textPostList.title}</title>
       </Helmet>
       <div className="flex flex-col items-center">
         {load && (
@@ -74,32 +74,32 @@ const NotepadList = () => {
           </div>
         )}
 
-        <h2 className="font-bold text-3xl	ml-2 text-defaultRed">NotepadList</h2>
+        <h2 className="font-bold text-3xl	ml-2 text-defaultRed">PostList</h2>
       </div>
-      {notepads.map((notepad) => {
+      {posts.map((post) => {
         return (
-          <div key={notepad.id} className="border-b p-2">
+          <div key={post.id} className="border-b p-2">
             <span>
               <BreadCrumbs
                 link={[
                   { href: "/", label: "Home" },
                   {
-                    href: `/editar-notepad/${notepad.id}`,
-                    label: `Editar Notepad ${notepad.id}`,
+                    href: `/editar-post/${post.id}`,
+                    label: `Editar Post ${post.id}`,
                   },
                 ]}
               />
             </span>
-            <span className="italic">#{notepad.id}</span>
+            <span className="italic">#{post.id}</span>
 
             <span className="flex gap-6 items-center">
-              <DeleteButton id={notepad.id} />
-              <EditButton id={notepad.id} />
+              <DeleteButton id={post.id} />
+              <EditButton id={post.id} />
             </span>
-            <h1 className="text-2xl font-bold">{notepad.title}</h1>
-            <h4 className="text-lg	font-bold">{notepad.subtitle}</h4>
-            <p className="italic">{notepad.content}</p>
-            <p>{new Date(notepad.created_at).toLocaleDateString()}</p>
+            <h1 className="text-2xl font-bold">{post.title}</h1>
+            <h4 className="text-lg	font-bold">{post.subtitle}</h4>
+            <p className="italic">{post.content}</p>
+            <p>{new Date(post.created_at).toLocaleDateString()}</p>
           </div>
         );
       })}
@@ -109,13 +109,13 @@ const NotepadList = () => {
 
 // return (
 //   <div className="p-5 m-5 text-white bg-darkTheme">
-//     <h2>NotepadList</h2>
-//     {notepads.map((notepad) => {
+//     <h2>PostList</h2>
+//     {posts.map((post) => {
 //       return (
-//         <div key={notepad.id} className="border-b p-2">
-//           <h1 className="text-lg font-bold">{notepad.tittle}</h1>
-//           <h4>{notepad.subtitle}</h4>
-//           <p>{notepad.createdAt.toLocaleDateString()}</p>
+//         <div key={post.id} className="border-b p-2">
+//           <h1 className="text-lg font-bold">{post.tittle}</h1>
+//           <h4>{post.subtitle}</h4>
+//           <p>{post.createdAt.toLocaleDateString()}</p>
 //         </div>
 //       );
 //     })}
@@ -124,12 +124,12 @@ const NotepadList = () => {
 // };
 
 // Componente Pai
-const NotepadListMain = () => {
+const PostListMain = () => {
   return (
     <div className="bg-backGroundColorDarkTheme">
-      <NotepadList />
+      <PostList />
     </div>
   );
 };
 
-export default NotepadListMain;
+export default PostListMain;
