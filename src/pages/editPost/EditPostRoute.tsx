@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ButtonSubmitForm from "../../components/ButtonSubmitForm";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { api } from "../../api";
-import { notepadSchema } from "../../postSchema";
+import { postSchema } from "../../postSchema";
 import { useZorm } from "react-zorm";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-simple-toasts";
@@ -24,14 +24,14 @@ const StyledLabel = styled.label<StyledLabelProps>`
   margin-bottom: 1rem;
 `;
 
-const textEditNotepad = {
-  title: "Editar Notepad",
+const textEditPost = {
+  title: "Editar Post",
   editSuccess: "Edição concluída com sucesso",
   editeFailure: "Ocorreu um erro ",
-  titleEdit: "Editar Notepad",
+  titleEdit: "Editar Post",
 };
 
-const initialStageNotepad = {
+const initialStagePost = {
   id: "0",
   title: "",
   subtitle: "",
@@ -39,42 +39,42 @@ const initialStageNotepad = {
   created_at: "",
 };
 
-const EditNotepadRoute = () => {
+const EditPostRoute = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const [initialStageFormEditNotepad, setInitialStageFormEditNotepad] =
-    useState(initialStageNotepad);
+  const [initialStageFormEditPost, setInitialStageFormEditPost] =
+    useState(initialStagePost);
 
-  const zo = useZorm("edit-notepad", notepadSchema, {
+  const zo = useZorm("edit-post", postSchema, {
     async onValidSubmit(event) {
       event.preventDefault();
-      const response = await api.put(`/notepads/${params.id}`, event.data);
+      const response = await api.put(`/posts/${params.id}`, event.data);
       console.log(response.data);
 
       if (response.status == 200) {
         console.log(response.data);
 
-        toast(textEditNotepad.editSuccess);
-        navigate("/listar-notepads/");
+        toast(textEditPost.editSuccess);
+        navigate("/listar-posts/");
       } else {
-        toast(textEditNotepad.editeFailure);
+        toast(textEditPost.editeFailure);
       }
     },
   });
 
-  async function loadNotepad() {
-    const response = await api.get(`/notepads/${params.id}`);
-    setInitialStageFormEditNotepad(response.data);
+  async function loadPost() {
+    const response = await api.get(`/posts/${params.id}`);
+    setInitialStageFormEditPost(response.data);
   }
 
   useEffect(() => {
-    loadNotepad();
+    loadPost();
   }, [params.id]);
 
   return (
     <section className="my-20 relative min-h-screen">
       <Helmet>
-        <title>{textEditNotepad.titleEdit}</title>
+        <title>{textEditPost.titleEdit}</title>
       </Helmet>
       <div className="form-container absolute inset-x-1/4">
         <form
@@ -86,14 +86,14 @@ const EditNotepadRoute = () => {
               link={[
                 { href: "/", label: "Home" },
                 {
-                  href: "/listar-notepads/",
-                  label: "Listar Notepads",
+                  href: "/listar-posts/",
+                  label: "Listar Posts",
                 },
               ]}
             />
           </div>
           <h1 className="font-bold text-2xl text-white ml-3">
-            {textEditNotepad.title} {params.id}
+            {textEditPost.title} {params.id}
           </h1>
 
           <div className="flex-col">
@@ -109,7 +109,7 @@ const EditNotepadRoute = () => {
               type="text"
               placeholder="Digite seu Título"
               name={zo.fields.title()}
-              defaultValue={initialStageFormEditNotepad.title}
+              defaultValue={initialStageFormEditPost.title}
             />
             {zo.errors.title((erro) => (
               <ErrorMessage>{erro.message}</ErrorMessage>
@@ -130,7 +130,7 @@ const EditNotepadRoute = () => {
               type="text"
               placeholder="Digite o Subtítulo"
               name={zo.fields.subtitle()}
-              defaultValue={initialStageFormEditNotepad.subtitle}
+              defaultValue={initialStageFormEditPost.subtitle}
             />
 
             {zo.errors.subtitle((erro) => (
@@ -151,7 +151,7 @@ const EditNotepadRoute = () => {
               id=""
               placeholder="Digite seu Texto"
               name={zo.fields.content()}
-              defaultValue={initialStageFormEditNotepad.content}
+              defaultValue={initialStageFormEditPost.content}
             ></textarea>
 
             {zo.errors.content((erro) => (
@@ -165,4 +165,4 @@ const EditNotepadRoute = () => {
   );
 };
 
-export default EditNotepadRoute;
+export default EditPostRoute;
