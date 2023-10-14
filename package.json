@@ -1,9 +1,9 @@
 {
-  "name": "charliepad",
+  "name": "orkut_frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://charlesanderson25.github.io/charliepad/",
+  "homepage": "https://github.com/charlesanderson25/orkut_frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
