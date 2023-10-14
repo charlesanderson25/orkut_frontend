@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ButtonSubmitForm from "../../components/ButtonSubmitForm";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { api } from "../../api";
-import { notepadSchema } from "../../postSchema";
+import { postSchema } from "../../postSchema";
 import { useZorm } from "react-zorm";
 import { useNavigate } from "react-router-dom";
 import toast from "react-simple-toasts";
@@ -10,9 +10,9 @@ import BreadCrumbs from "../../components/BreadCrumbs";
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 
-const textCreateNotepadRoute = {
-  h1: "Criar Notepad",
-  title: "Criar Notepad",
+const textCreatePostRoute = {
+  h1: "Criar Post",
+  title: "Criar Post",
 };
 
 interface StyledLabelProps {
@@ -29,32 +29,32 @@ const StyledLabel = styled.label<StyledLabelProps>`
   margin-bottom: 1rem;
 `;
 
-const CreateNotepadRoute = () => {
+const CreatePostRoute = () => {
   const navigate = useNavigate();
 
-  const zo = useZorm("create-notepad", notepadSchema, {
+  const zo = useZorm("create-post", postSchema, {
     async onValidSubmit(event) {
       event.preventDefault();
-      const response = await api.post("/notepads", event.data);
+      const response = await api.post("/posts", event.data);
       console.log(response.data.sucess);
 
       if (response.status === 200) {
-        toast("O notepad foi cadastrado com sucesso!");
+        toast("O post foi cadastrado com sucesso!");
       } else {
-        toast("Ocorreu um erro ao cadastrar o notepad!");
+        toast("Ocorreu um erro ao cadastrar o post!");
       }
       navigate("/");
     },
   });
 
   useEffect(() => {
-    console.log("CreateNotepadRoute renderizado com sucesso!");
+    console.log("CreatePostRoute renderizado com sucesso!");
   }, []);
 
   return (
     <section className="my-20 relative min-h-screen">
       <Helmet>
-        <title>{textCreateNotepadRoute.title}</title>
+        <title>{textCreatePostRoute.title}</title>
       </Helmet>
       <div className="form-container absolute inset-x-1/4">
         <form
@@ -66,15 +66,15 @@ const CreateNotepadRoute = () => {
               link={[
                 { href: "/", label: "Home" },
                 {
-                  href: "/listar-notepads/",
-                  label: "Listar Notepads",
+                  href: "/listar-posts/",
+                  label: "Listar Posts",
                 },
               ]}
             />
           </div>
           <h1 className="font-bold text-2xl text-white ml-3">
             {" "}
-            {textCreateNotepadRoute.h1}{" "}
+            {textCreatePostRoute.h1}{" "}
           </h1>
 
           <div className="flex-col">
@@ -143,4 +143,4 @@ const CreateNotepadRoute = () => {
   );
 };
 
-export default CreateNotepadRoute;
+export default CreatePostRoute;
