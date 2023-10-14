@@ -5,8 +5,8 @@ import toast from "react-simple-toasts";
 import { api } from "../api";
 
 const textDeleteButton = {
-  p: "Excluir Notepad?",
-}
+  p: "Excluir Post?",
+};
 
 interface PropsDeleteButton {
   id: string;
@@ -24,13 +24,13 @@ const DeleteButton = ({ id }: PropsDeleteButton) => {
     setIsHovered(false);
   };
 
-  async function deleteNotepad() {
-    const response = await api.delete(`/notepads/${id}`);
+  async function deletePost() {
+    const response = await api.delete(`/posts/${id}`);
     console.log(response.status);
     if (response.status === 200) {
       toast(`Ohh Não, #${id}Fui Deletado!`);
     } else {
-      toast("Houve um erro ao excluir esse notepad!");
+      toast("Houve um erro ao excluir esse post!");
     }
 
     navigate("/");
@@ -39,7 +39,7 @@ const DeleteButton = ({ id }: PropsDeleteButton) => {
   return (
     <span className="flex">
       <button
-        onClick={deleteNotepad}
+        onClick={deletePost}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
