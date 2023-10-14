@@ -7,7 +7,7 @@ interface PropsEditButton {
 }
 
 const texts = {
-  titleEditNotepad: "Editar Notepad",
+  titleEditPost: "Editar Post",
 };
 
 const EditButton = ({ id }: PropsEditButton) => {
@@ -27,7 +27,7 @@ const EditButton = ({ id }: PropsEditButton) => {
         <Link
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          to={`/editar-notepad/${id}`}
+          to={`/editar-post/${id}`}
           className="font-bold text-4xl hover:text-defaultRed"
         >
           <EditIcon />
@@ -37,7 +37,7 @@ const EditButton = ({ id }: PropsEditButton) => {
             className="text-defaultRed flex items-center justify-center"
             style={{ fontFamily: "Josefin Sans, sans-serif" }}
           >
-            {texts.titleEditNotepad} {id}
+            {texts.titleEditPost} {id}
           </p>
         )}
       </span>
