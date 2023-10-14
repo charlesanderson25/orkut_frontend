@@ -2,18 +2,18 @@ import { Route, Routes } from "react-router-dom";
 import BackGroundImage from "../components/BackGroundImage";
 import { NotFoundTwo } from "../pages/notFound/NotFoundTwo";
 import Welcome from "../pages/welcome/Welcome";
-import CreateNotepadRoute from "../pages/createPostRoute/CreatePostRoute";
-import EditNotepadRoute from "../pages/editPost/EditPostRoute";
-import NotepadListMain from "../pages/PostListMain/PostListMain";
+import CreatePostRoute from "../pages/createPostRoute/CreatePostRoute";
+import EditPostRoute from "../pages/editPost/EditPostRoute";
+import PostListMain from "../pages/PostListMain/PostListMain";
 
 const RoutesApp = () => {
   return (
     <Routes>
       <Route path="/" element={<Welcome />} />
-      <Route path="/listar-notepads" element={<NotepadListMain />} />
-      <Route path="/criar-Notepad" element={<CreateNotepadRoute />} />
+      <Route path="/listar-posts" element={<PostListMain />} />
+      <Route path="/criar-Post" element={<CreatePostRoute />} />
       <Route path="image" element={<BackGroundImage />} />
-      <Route path="/editar-notepad/:id" element={<EditNotepadRoute />} />
+      <Route path="/editar-post/:id" element={<EditPostRoute />} />
 
       <Route path="*" element={<NotFoundTwo />} />
     </Routes>
