@@ -1,11 +1,10 @@
-
 // Componente Pai
-const NotepadBody = () => {
-    return (
-      <div className="bg-backGroundColorDarkTheme h-screen">
-        <NotepadBody/>
-      </div>
-    );
-  };
-  
-  export default NotepadBody;
+const PostBody = () => {
+  return (
+    <div className="bg-backGroundColorDarkTheme h-screen">
+      <PostBody />
+    </div>
+  );
+};
+
+export default PostBody;
