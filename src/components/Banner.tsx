@@ -1,7 +1,7 @@
-import { SiMicrosoftonenote as IconLogoNotepad } from "react-icons/si";
-import ButtonCreateNotepad from "./ButtonCreatePost";
+import { SiMicrosoftonenote as IconLogoPost } from "react-icons/si";
+import ButtonCreatePost from "./ButtonCreatePost";
 import { Link } from "react-router-dom";
-import ListNotepads from "./ListPosts";
+import ListPosts from "./ListPosts";
 
 const textsBanner = {
   h1: "CharliePad",
@@ -16,7 +16,7 @@ const Banner = () => {
     >
       <div className="flex items-center">
         <Link to="/" className="flex items-center mr-16">
-          <IconLogoNotepad className="bg-defaultRed text-6xl m-1 " />
+          <IconLogoPost className="bg-defaultRed text-6xl m-1 " />
           <h1 className="font-bold text-2xl text-white hover:text-defaultRed tracking-wide">
             {textsBanner.h1}
           </h1>
@@ -27,9 +27,9 @@ const Banner = () => {
         >
           {textsBanner.home}
         </Link>
-        <ListNotepads />
+        <ListPosts />
       </div>
-      <ButtonCreateNotepad />
+      <ButtonCreatePost />
     </div>
   );
 };
