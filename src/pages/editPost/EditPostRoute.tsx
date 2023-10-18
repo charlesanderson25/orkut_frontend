@@ -31,6 +31,10 @@ const textEditPost = {
   titleEdit: "Editar Post",
 };
 
+const textComentarios = {
+  title: "Comentários",
+};
+
 const initialStagePost = {
   id: "0",
   title: "",
@@ -102,7 +106,7 @@ const EditPostRoute = () => {
               subtitulo="Subtítulo"
               texto="Texto"
             ></StyledLabel>
-            <input
+            {/* <input
               className={`bg-backGroundColorDarkTheme shadow-md w-full py-3 px-1 m-2 rounded-md text-white ${zo.errors.title(
                 "border-2 border-red-500 focus:border-red-600"
               )} `}
@@ -110,7 +114,7 @@ const EditPostRoute = () => {
               placeholder="Digite seu Título"
               name={zo.fields.title()}
               defaultValue={initialStageFormEditPost.title}
-            />
+            /> */}
             {zo.errors.title((erro) => (
               <ErrorMessage>{erro.message}</ErrorMessage>
             ))}
@@ -123,7 +127,7 @@ const EditPostRoute = () => {
               texto="Texto"
             ></StyledLabel>
 
-            <input
+            {/* <input
               className={`bg-backGroundColorDarkTheme shadow-md w-full py-3 px-1 m-2 rounded-md text-white ${zo.errors.subtitle(
                 "border-2 border-red-500 focus:border-red-600"
               )} `}
@@ -131,7 +135,7 @@ const EditPostRoute = () => {
               placeholder="Digite o Subtítulo"
               name={zo.fields.subtitle()}
               defaultValue={initialStageFormEditPost.subtitle}
-            />
+            /> */}
 
             {zo.errors.subtitle((erro) => (
               <ErrorMessage>{erro.message}</ErrorMessage>
