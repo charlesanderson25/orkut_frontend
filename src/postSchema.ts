@@ -1,24 +1,24 @@
 import { z } from "zod";
 
-const title = z
-  .string()
+// const title = z
+//   .string()
 
-  .min(3, {
-    message: "Mínimo de 3 caracteres para o título.",
-  })
-  .max(16, {
-    message: "Máximo de 16 caracteres para o título",
-  });
+//   .min(3, {
+//     message: "Mínimo de 3 caracteres para o título.",
+//   })
+//   .max(16, {
+//     message: "Máximo de 16 caracteres para o título",
+//   });
 
-const subtitle = z
-  .string()
+// const subtitle = z
+//   .string()
 
-  .min(7, {
-    message: "Mínimo de 7 caracteres para o subtítulo.",
-  })
-  .max(24, {
-    message: "Máximo de 24 caracteres para o subtítulo",
-  });
+//   .min(7, {
+//     message: "Mínimo de 7 caracteres para o subtítulo.",
+//   })
+//   .max(24, {
+//     message: "Máximo de 24 caracteres para o subtítulo",
+//   });
 
 const content = z
   .string()
@@ -31,7 +31,7 @@ const content = z
   });
 
 export const postSchema = z.object({
-  title,
-  subtitle,
+  // title,
+  // subtitle,
   content,
 });
