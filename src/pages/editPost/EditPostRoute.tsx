@@ -52,6 +52,11 @@ const EditPostRoute = () => {
     setInitialStageFormEditPost(response.data);
   }
 
+  async function loadComments() {
+    const response = await api.get(`/posts/${params.id}/comments`);
+    const comments = response.data;
+  }
+
   useEffect(() => {
     loadPost();
   }, [params.id]);
