@@ -296,12 +296,12 @@ const EditPostRoute = () => {
             ></textarea>
           </div>
           <div className="mt-4">
-            <button
+            {/* <button
               className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
               type="submit"
-            >
-              Enviar
-            </button>
+            > */}
+            <ButtonSubmitForm />
+            {/* </button> */}
           </div>
         </form>
       </section>
