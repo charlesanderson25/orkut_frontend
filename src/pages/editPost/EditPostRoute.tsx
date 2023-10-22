@@ -18,6 +18,7 @@ const textEditPost = {
 
 const textComentarios = {
   title: "Comentários",
+  content: "Comentário:",
 };
 
 const initialStagePost = {
@@ -110,7 +111,9 @@ const EditPostRoute = () => {
             {textComentarios.title}
           </div>
           <div className="flex-col">
-            <label className="block text-white text-sm mb-4">Comentário</label>
+            <label className="block text-white text-sm mb-4">
+              {textComentarios.content}
+            </label>
             <textarea
               className="bg-backGroundColorDarkTheme shadow-md w-full py-3 px-1 m-2 rounded-md text-white"
               id=""
