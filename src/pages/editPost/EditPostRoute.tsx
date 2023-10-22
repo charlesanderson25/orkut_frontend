@@ -235,11 +235,11 @@ const EditPostRoute = () => {
 
   return (
     <>
-      <section className="my-20 relative min-h-screen">
+      <section className="my-20 relative">
         <Helmet>
           <title>{textEditPost.titleEdit}</title>
         </Helmet>
-        <div className="form-container absolute inset-x-1/4">
+        <div className="form-container inset-x-1/4">
           <form
             className="form bg-darkTheme rounded-2xl py-9 px-16 font-sans"
             ref={zo.ref}
@@ -282,7 +282,7 @@ const EditPostRoute = () => {
         </div>
       </section>
 
-      <section className="my-20 relative min-h-screen">
+      <section className="mt-4 relative">
         <form className="form bg-darkTheme rounded-2xl py-9 px-16 font-sans">
           <div className="text-white text-2xl mb-4">
             {textComentarios.title}
