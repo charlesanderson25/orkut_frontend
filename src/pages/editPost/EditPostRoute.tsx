@@ -27,11 +27,24 @@ const initialStagePost = {
   created_at: "",
 };
 
+interface Comment {
+  id: number;
+  message: string;
+  created_at: string;
+  user_id: number;
+  user_first_name: string;
+  user_last_name: string;
+  user_avatar: string;
+}
+
+const initialComments: Comment[] = [];
+
 const EditPostRoute = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [initialStageFormEditPost, setInitialStageFormEditPost] =
     useState(initialStagePost);
+  const [comments, setComments] = useState(initialComments);
 
   const zo = useZorm("edit-post", postSchema, {
     async onValidSubmit(event) {
