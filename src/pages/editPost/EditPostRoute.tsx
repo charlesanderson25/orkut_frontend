@@ -68,11 +68,15 @@ const EditPostRoute = () => {
   async function loadComments() {
     const response = await api.get(`/posts/${params.id}/comments`);
     const comments = response.data;
+    setComments(comments);
   }
 
   useEffect(() => {
     loadPost();
+    loadComments();
   }, [params.id]);
+
+  console.log(comments);
 
   return (
     <>
