@@ -151,6 +151,19 @@ const EditPostRoute = () => {
             {/* </button> */}
           </div>
         </form>
+        <section>
+          {comments.map((comment) => (
+            <div
+              key={comment.id}
+              className="border-b py-2 cursor-pointer block"
+            >
+              <span className="text-sm text-gray-500">
+                {new Date(comment.created_at).toLocaleDateString()}
+              </span>
+              <p>{comment.message}</p>
+            </div>
+          ))}
+        </section>
       </section>
     </>
   );
