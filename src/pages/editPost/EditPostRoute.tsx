@@ -38,6 +38,7 @@ interface Comment {
 }
 
 const initialComments: Comment[] = [];
+const initialComment = "";
 
 const EditPostRoute = () => {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const EditPostRoute = () => {
   const [initialStageFormEditPost, setInitialStageFormEditPost] =
     useState(initialStagePost);
   const [comments, setComments] = useState(initialComments);
+  const [comment, setComment] = useState(initialComment);
 
   const zo = useZorm("edit-post", postSchema, {
     async onValidSubmit(event) {
@@ -69,6 +71,19 @@ const EditPostRoute = () => {
     const response = await api.get(`/posts/${params.id}/comments`);
     const comments = response.data;
     setComments(comments);
+  }
+
+  async function createComment() {
+    const response = await api.post(`/posts/${params.id}/comments`, {
+      message: comment,
+    });
+    console.log(response.data);
+  }
+
+  async function onCommentSubmit(event) {
+    event.preventDefault();
+    await createComment();
+    await loadComments();
   }
 
   useEffect(() => {
@@ -128,7 +143,10 @@ const EditPostRoute = () => {
       </section>
 
       <section className="mt-4 relative">
-        <form className="form bg-darkTheme rounded-2xl py-9 px-16 font-sans">
+        <form
+          onSubmit={onCommentSubmit}
+          className="form bg-darkTheme rounded-2xl py-9 px-16 font-sans"
+        >
           <div className="text-white text-2xl mb-4">
             {textComentarios.title}
           </div>
@@ -140,6 +158,8 @@ const EditPostRoute = () => {
               className="bg-backGroundColorDarkTheme shadow-md w-full py-3 px-1 m-2 rounded-md text-white"
               id=""
               placeholder="Digite seu Comentário"
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
             ></textarea>
           </div>
           <div className="mt-4">
