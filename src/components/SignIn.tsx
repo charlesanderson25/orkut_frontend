@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ButtonSubmitForm from "./ButtonSubmitForm";
 import { Card } from "./Card";
 import { TextField } from "./TextField";
 import { Button } from "./Button";
+import { api } from "../api";
 
 const initialForm = {
   email: "",
@@ -12,12 +12,9 @@ const initialForm = {
 export function SignIn() {
   const [form, setForm] = useState(initialForm);
 
-  function submitForm(event: React.FormEvent<HTMLFormElement>) {
+  async function submitForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    alert(`
-      email: ${form.email}
-      senha: ${form.password}
-    `);
+    const response = await api.post("/auth/sign-in", form);
   }
 
   return (
