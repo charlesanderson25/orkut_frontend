@@ -2,6 +2,7 @@ import { SiMicrosoftonenote as IconLogoPost } from "react-icons/si";
 import ButtonCreatePost from "./ButtonCreatePost";
 import { Link } from "react-router-dom";
 import ListPosts from "./ListPosts";
+import ButtonEntrar from "./ButtonEntrar";
 
 const textsBanner = {
   h1: "CharliePad",
@@ -29,6 +30,7 @@ const Banner = () => {
         </Link>
         <ListPosts />
       </div>
+      <ButtonEntrar />
       <ButtonCreatePost />
     </div>
   );
