@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "./Card";
 import { TextField } from "./TextField";
 import { Button } from "./Button";
@@ -12,6 +12,10 @@ const initialForm = {
 
 export function SignIn() {
   const [form, setForm] = useState(initialForm);
+
+  useEffect(() => {
+    api.get("/auth/session");
+  }, []);
 
   async function submitForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
