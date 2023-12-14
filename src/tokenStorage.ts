@@ -1,11 +1,15 @@
 const tokenPath = "token";
 
 export abstract class TokenStorage {
-  static getToken() {}
+  static getToken() {
+    return localStorage.getItem(tokenPath);
+  }
 
   static setToken(token: string) {
     localStorage.setItem(tokenPath, token);
   }
 
-  static removeToken() {}
+  static removeToken() {
+    localStorage.removeItem(tokenPath);
+  }
 }
