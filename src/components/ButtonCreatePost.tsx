@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useGlobalStore } from "../useGlobalStore";
+import { TokenStorage } from "../tokenStorage";
+import toast from "react-simple-toasts";
+import ButtonLogout from "./ButtonLogout";
 
 const textButtonCreatePost = {
   button: "Criar Post",
@@ -8,6 +11,11 @@ const textButtonCreatePost = {
 const ButtonCreatePost = () => {
   const user = useGlobalStore((state) => state.user);
   const isAuthorized = useGlobalStore((state) => state.isAuthorized);
+
+  const logout = () => {
+    TokenStorage.removeToken();
+    toast(`Até mais, ${user.first_name}`);
+  };
 
   return !isAuthorized ? (
     <div
@@ -19,6 +27,7 @@ const ButtonCreatePost = () => {
           {textButtonCreatePost.button}
         </button>
       </Link>
+      <ButtonLogout onClick={logout} />
     </div>
   ) : null;
 };
