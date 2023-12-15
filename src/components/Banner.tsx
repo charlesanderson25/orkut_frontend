@@ -12,6 +12,7 @@ const textsBanner = {
 
 const Banner = () => {
   const user = useGlobalStore((state) => state.user);
+  const isAuthorized = useGlobalStore((state) => state.isAuthorized);
 
   return (
     <div
