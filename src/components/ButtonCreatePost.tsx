@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import { useGlobalStore } from "../useGlobalStore";
 
 const textButtonCreatePost = {
   button: "Criar Post",
 };
 
 const ButtonCreatePost = () => {
-  return (
+  const user = useGlobalStore((state) => state.user);
+  const isAuthorized = useGlobalStore((state) => state.isAuthorized);
+
+  return !isAuthorized ? (
     <div
       style={{ fontFamily: "Josefin Sans, sans-serif" }}
       className="flex ml-4 mt-4 md:mt-0"
@@ -16,7 +20,7 @@ const ButtonCreatePost = () => {
         </button>
       </Link>
     </div>
-  );
+  ) : null;
 };
 
 export default ButtonCreatePost;
