@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import ListPosts from "./ListPosts";
 import ButtonEntrar from "./ButtonEntrar";
 import { useGlobalStore } from "../useGlobalStore";
+import ButtonLogout from "./ButtonLogout";
+import { TokenStorage } from "../tokenStorage";
+import toast from "react-simple-toasts";
 
 const textsBanner = {
   h1: "CharliePad",
@@ -12,7 +15,22 @@ const textsBanner = {
 
 const Banner = () => {
   const user = useGlobalStore((state) => state.user);
+  const setUser = useGlobalStore((state) => state.setUser);
+  const setIsAuthorized = useGlobalStore((state) => state.setIsAuthorized);
   const isAuthorized = useGlobalStore((state) => state.isAuthorized);
+
+  const logout = () => {
+    TokenStorage.removeToken();
+    toast(`Até mais, ${user.first_name}`);
+    setIsAuthorized(false);
+    setUser({
+      id: 0,
+      first_name: "",
+      last_name: "",
+      email: "",
+      avatar: "",
+    });
+  };
 
   return (
     <div
@@ -36,6 +54,7 @@ const Banner = () => {
       </div>
       <ButtonEntrar />
       <ButtonCreatePost />
+      {/* <ButtonLogout onClick={logout} /> */}
       <div className="flex flex-row items-center gap-8 text-white">
         {user.first_name} {user.last_name}
         <img src={user.avatar} className="w-12 h-12 rounded-full" />
