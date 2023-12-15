@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import { useGlobalStore } from "../useGlobalStore";
 
 const textButtonEntrar = {
   button: "Entrar",
 };
 
 const ButtonEntrar = () => {
-  return (
+  const user = useGlobalStore((state) => state.user);
+  const isAuthorized = useGlobalStore((state) => state.isAuthorized);
+
+  return !isAuthorized ? (
     <div
       style={{ fontFamily: "Josefin Sans, sans-serif" }}
       className="flex ml-4 mt-4 md:mt-0"
@@ -16,7 +20,7 @@ const ButtonEntrar = () => {
         </button>
       </Link>
     </div>
-  );
+  ) : null;
 };
 
 export default ButtonEntrar;
